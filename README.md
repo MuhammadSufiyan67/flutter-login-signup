@@ -28,10 +28,18 @@ I built it as part of my learning journey and I’m excited to keep improving it
 
 
 ## 🛠️ My Learning Path (Week 1 Recap)
-1️⃣ Started with **Dart fundamentals** to build a strong base  
+1️⃣ Started with **Dart fundamentals** to build a strong base ss 
 2️⃣ Explored **Flutter widgets & UI design**  
 3️⃣ Applied my knowledge to build a **Login & Signup app**  
 
 
 
 ## 📂 Project Structure
+
+ 📸 Screenshots
+
+### Login Screen
+![Login Screen](assets/screenshots/login_screen.jpg)
+
+### Signup Screen
+![Signup Screen](assets/screenshots/signup_screen.jpeg)
