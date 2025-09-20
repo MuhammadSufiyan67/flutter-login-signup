@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {
-  runApp(const MyApp()); // Entry point of the app
+  runApp(const MyApp());
 }
 
+// Root of the app
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -12,11 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Login & Signup',
-      debugShowCheckedModeBanner: false, // Removes the debug banner
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple, // App theme color
+        primarySwatch: Colors.deepPurple,
       ),
-      home: const AuthPage(), // First screen when app starts
+      home: const AuthPage(), // Loads the authentication screen first
     );
   }
 }
@@ -30,34 +31,36 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
-  // TextEditingControllers for capturing user input
+  // Controllers to capture user input
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  bool isLogin = true; // Toggle between Login and Signup
-  bool _isPasswordVisible = false; // For showing/hiding password text
+  bool isLogin = true; // true = Login mode, false = Signup mode
+  bool _isPasswordVisible = false; // Password visibility toggle
 
   // -------------------- VALIDATION AND NAVIGATION --------------------
   void validateFields() {
     String email = _emailController.text.trim();
     String password = _passwordController.text.trim();
 
-    // Basic email validation
+    // Basic email validation (checks for '@')
     if (!email.contains('@')) {
       Fluttertoast.showToast(msg: "Please enter a valid email!");
       return;
     }
-    // Password check
+
+    // Ensure password is not empty
     if (password.isEmpty) {
       Fluttertoast.showToast(msg: "Please enter password!");
       return;
     }
 
-    // Show toast message based on action
+    // Show success message based on mode
     Fluttertoast.showToast(
         msg: isLogin ? "Login Successful!" : "Signup Successful!");
 
-    // Navigate to Welcome Screen after validation
+    // Navigate to Welcome Screen
+    // (Note: Navigator.push keeps AuthPage in backstack, so user can go back)
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const WelcomeScreen()),
@@ -74,14 +77,16 @@ class _AuthPageState extends State<AuthPage> {
         backgroundColor: Colors.deepPurple,
       ),
       body: Center(
-        // SingleChildScrollView helps avoid overflow when keyboard appears
+        // Avoids overflow when keyboard opens
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.lock, size: 100, color: Colors.deepPurple),
+              const Icon(Icons.lock, size: 100, color: Colors.deepPurple),
               const SizedBox(height: 20),
+
+              // Title changes based on Login/Signup mode
               Text(
                 isLogin ? 'Welcome Back!' : 'Create an Account',
                 style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
@@ -106,18 +111,18 @@ class _AuthPageState extends State<AuthPage> {
               // -------------------- PASSWORD FIELD --------------------
               TextField(
                 controller: _passwordController,
-                obscureText: !_isPasswordVisible, // Toggle password visibility
+                obscureText: !_isPasswordVisible, // Password hide/show
                 decoration: InputDecoration(
                   labelText: 'Password',
                   prefixIcon: const Icon(Icons.lock),
                   suffixIcon: IconButton(
+                    // Eye icon to toggle password visibility
                     icon: Icon(
                       _isPasswordVisible
                           ? Icons.visibility
                           : Icons.visibility_off,
                     ),
                     onPressed: () {
-                      // Updates UI when visibility icon is pressed
                       setState(() {
                         _isPasswordVisible = !_isPasswordVisible;
                       });
@@ -135,9 +140,9 @@ class _AuthPageState extends State<AuthPage> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: validateFields,
+                  onPressed: validateFields, // Runs validation & navigation
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.teal, // Button color
+                    backgroundColor: Colors.teal,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
@@ -148,7 +153,7 @@ class _AuthPageState extends State<AuthPage> {
                     isLogin ? 'Login' : 'Signup',
                     style: const TextStyle(
                       fontSize: 22,
-                      color: Colors.white, // Button text color
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -160,7 +165,7 @@ class _AuthPageState extends State<AuthPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "Don't have an account?",
                     style: TextStyle(
                       fontSize: 16,
@@ -170,11 +175,12 @@ class _AuthPageState extends State<AuthPage> {
                   const SizedBox(width: 8),
                   GestureDetector(
                     onTap: () {
+                      // Switches form to Signup mode
                       setState(() {
-                        isLogin = false; // Switch to Signup mode
+                        isLogin = false;
                       });
                     },
-                    child: Text(
+                    child: const Text(
                       "Sign up",
                       style: TextStyle(
                         fontSize: 16,
@@ -208,17 +214,18 @@ class WelcomeScreen extends StatelessWidget {
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(16.0), // Padding around text
+          padding: const EdgeInsets.all(16.0),
           child: FittedBox(
-            fit: BoxFit.scaleDown, // Prevents text overflow on small screens
-            child: Text(
+            // Ensures text scales on small devices
+            fit: BoxFit.scaleDown,
+            child: const Text(
               "Where Innovation Meets Flutter!",
               style: TextStyle(
                 fontSize: 36,
                 fontWeight: FontWeight.bold,
                 color: Colors.deepPurple,
               ),
-              textAlign: TextAlign.center, // Centers text
+              textAlign: TextAlign.center,
             ),
           ),
         ),

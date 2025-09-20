@@ -1,21 +1,33 @@
 name: flutter_auth_app
 description: A simple Flutter app with Login and Signup screens
+
+# Prevents accidental publishing to pub.dev
 publish_to: "none"
+
+# Version format: major.minor.patch+build
 version: 1.0.0+1
 
 environment:
+  # Flutter SDK version range supported by this project
   sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+
+  # iOS-style icons (used with Cupertino widgets)
   cupertino_icons: ^1.0.8
+
+  # For showing toast messages (short popup notifications)
   fluttertoast: ^8.2.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  # Lint rules to maintain clean & standard code style
   flutter_lints: ^3.0.1
 
 flutter:
+  # Enables the use of Material Design widgets
   uses-material-design: true
