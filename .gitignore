@@ -41,3 +41,23 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Personal images
+assets/images/S1.jpg
+assets/images/S2.jpg
+assets/images/S3.jpg
+assets/images/S4.jpg
+assets/images/S5.jpg
+assets/images/S6.png
+assets/images/S9.png
+assets/images/S10.png
+assets/images/S11.jfif
+
+# Personal audio
+assets/audio/A1.mp3
+assets/audio/A2.mp3
+assets/audio/A3.mp3
+assets/audio/A4.mp3
+assets/audio/A5.mp3
+assets/audio/A6.mp3
+assets/audio/A7.mp3
