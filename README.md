@@ -1,6 +1,6 @@
 # 🚀 Flutter Login & Signup App  
 
-_Week 1 of My Flutter Journey 🚀_  
+_Week 1 of My Flutter Journey_  
 
 This is my very first Flutter project – a **Login & Signup App** with a clean and modern UI.  
 I built it as part of my learning journey and I’m excited to keep improving it step by step.  
@@ -35,11 +35,17 @@ I built it as part of my learning journey and I’m excited to keep improving it
 
 
 ## 📂 Project Structure
+lib/
+└─ main.dart
+assets/
+├─ fonts/
+└─ screenshots/
 
- 📸 Screenshots
 
-### Login Screen
+## 📸 Screenshots
+
+ Login Screen
 ![Login Screen](assets/screenshots/login_screen.jpg)
 
-### Signup Screen
+ Signup Screen
 ![Signup Screen](assets/screenshots/signup_screen.jpeg)
